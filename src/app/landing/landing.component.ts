@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -9,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LandingComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -25,6 +26,7 @@ export class LandingComponent implements OnInit {
 
   onSubmit() {
     console.log(this.userForm.value);
+    this.router.navigate(['renta']);
   }
 
 }

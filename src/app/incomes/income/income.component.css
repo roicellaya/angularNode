@@ -1,0 +1,13 @@
+.banner-income {
+  background-image: url('../../../assets/img/fondo-renta.jpg');
+}
+
+.banner-income-container {
+  margin-top: 8rem;
+}
+
+@media (min-width: 576px) {
+  .banner-income-container {
+    margin-top: 0;
+  }
+}
