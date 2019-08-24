@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'landing', pathMatch: 'full' },
-  { path: 'landing', component: LandingComponent },
-  { path: '**', redirectTo: 'landing' }
+  { path: '', component: LandingComponent },
+  { path: 'renta', loadChildren: './incomes/incomes.module#IncomesModule' },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
