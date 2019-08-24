@@ -15,7 +15,7 @@
     <div class="col-12 banner-container banner-income">
       <div class="row banner-income-container">
         <div class="col-12 col-md-6 p-l-0-px p-t-115-px offset-md-6">
-          <form class="user-form">
+          <form [formGroup]="incomeForm" (ngSubmit)="onSubmit()">
             <h3>
               <span class="falabella-dark-green">ayúdanos </span> con unos
             </h3>
@@ -32,10 +32,10 @@
             <div class="form-group m-b-3-3">
               <label for="income">¿Cuál es tu renta líquida/ingreso mensual?</label>
               <input type="number" class="form-control" name="income" id="income"
-                     placeholder="Ej: $400.000" />
+                     placeholder="Ej: $400.000" formControlName="income" />
             </div>
 
-            <button class="btn btn-falabella-dark" type="submit">CONTINUAR</button>
+            <button class="btn btn-falabella-dark" type="submit" [disabled]="!incomeForm.valid">CONTINUAR</button>
           </form>
         </div>
       </div>
