@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-landing',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class LandingComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor( private router: Router) { }
+  constructor(private router: Router, private userData: UserDataService) { }
 
   ngOnInit() {
     this.initForm();
@@ -26,6 +27,10 @@ export class LandingComponent implements OnInit {
 
   onSubmit() {
     console.log(this.userForm.value);
+    // Save user data
+    this.userData.saveUser(this.userForm.value);
+
+    // Navigate to renta
     this.router.navigate(['renta']);
   }
 
