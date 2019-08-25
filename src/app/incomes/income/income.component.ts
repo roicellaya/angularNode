@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDataService } from '../../user-data.service';
+import { ApiService } from '../../api.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 
 interface User {
@@ -20,7 +21,7 @@ export class IncomeComponent implements OnInit, OnDestroy {
   private userDataRef: Subscription;
   private user: User;
 
-  constructor(private userData: UserDataService) { }
+  constructor(private userData: UserDataService, private api: ApiService) { }
 
   ngOnInit() {
     this.initForm();
@@ -41,8 +42,17 @@ export class IncomeComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     // Send data to node service
-    console.log(this.incomeForm.value);
-    console.log(this.user);
+    console.log(Object.assign(this.incomeForm.value, this.user));
+    this.api.sendUser(Object.assign(this.incomeForm.value, this.user))
+      .subscribe(this.sendUserSuccess, this.sendUserError);
+  }
+
+  private sendUserSuccess(response: any) {
+    console.log(response);
+  }
+
+  private sendUserError(error: Response) {
+    console.log(error);
   }
 
 }
