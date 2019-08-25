@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserDataService } from '../../user-data.service';
-import { ApiService } from '../../api.service';
+import { UserDataService } from '../../services/user-data.service';
+import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 
 interface User {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserDataService } from '../user-data.service';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-landing',
