@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { Response } from '@angular/http';
 import { throwError } from 'rxjs';
 
 interface UserAll {
@@ -28,9 +27,16 @@ export class ApiService {
       );
   }
 
-  private handleError (error: Response) {
-    console.log('ApiService::handleError', error);
+  private handleError (httpError: HttpErrorResponse) {
+    let customError: any = {};
 
-    return throwError(error);
+    if (httpError.status >= 400 && httpError.status <= 599) {
+      customError.status = httpError.status;
+      customError.message = httpError.error.message;
+    } else {
+      customError.status = 500;
+      customError.message = 'Error in service, please try later';
+    }
+    return throwError(customError);
   }
 }

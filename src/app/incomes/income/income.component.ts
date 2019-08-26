@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDataService } from '../../services/user-data.service';
 import { ApiService } from '../../services/api.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { ToastrService } from 'ngx-toastr';
 
 interface User {
   rut: string,
@@ -21,7 +22,7 @@ export class IncomeComponent implements OnInit, OnDestroy {
   private userDataRef: Subscription;
   private user: User;
 
-  constructor(private userData: UserDataService, private api: ApiService) { }
+  constructor(private userData: UserDataService, private api: ApiService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.initForm();
@@ -44,15 +45,13 @@ export class IncomeComponent implements OnInit, OnDestroy {
     // Send data to node service
     console.log(Object.assign(this.incomeForm.value, this.user));
     this.api.sendUser(Object.assign(this.incomeForm.value, this.user))
-      .subscribe(this.sendUserSuccess, this.sendUserError);
-  }
-
-  private sendUserSuccess(response: any) {
-    console.log(response);
-  }
-
-  private sendUserError(error: Response) {
-    console.log(error);
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+        }, (httpError: any) => {
+          console.log(httpError);
+          this.toastr.error(httpError.message);
+        });
   }
 
 }

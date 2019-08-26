@@ -19,18 +19,13 @@ export class AddHeaderInterceptor implements HttpInterceptor {
                 .set('x-user-os', os)
     });
 
-    return next.handle(newReq).pipe(catchError(this.catchErrorHandler));
-  }
-
-  private catchErrorHandler(error, caught) {
-    this.handleError(error);
-    return of(error);
+    return next.handle(newReq).pipe(catchError((error, caught) => {
+      this.handleError(error);
+      return of(error);
+    }));
   }
 
   private handleError(err: HttpErrorResponse): Observable<any> {
-    if (err.status === 401) {
-      console.log('Handled error: ' + err.status);
-    }
     throw err;
   }
 }
