@@ -1,27 +1,17 @@
 # AngularNode
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.
+Para probar este proyecto siga las siguientes instrucciones:
 
-## Development server
+## Dependencias
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Este projecto necesita nodejs v8, en caso que la versión usada dé error, instalar la versión específica 8.11.3.
 
-## Code scaffolding
+También se requiere que tenga instalado angular-cli v6, en caso que la versión instalada dé error, instalar la versión 6.2.9.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalación de dependencias npm
 
-## Build
+Para instalar las dependencias npm se debe ejecutar `npm install` en el directorio raíz del proyecto.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Iniciar la aplicación
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Luego de instalar las dependencias npm, ejecutar  `ng serve` o `npm start` para iniciar la aplicación en modo desarrollo. Luego, en un navegador abrir la url `http://localhost:4200/`. Con esto ya se puede probar la aplicación localmente.
