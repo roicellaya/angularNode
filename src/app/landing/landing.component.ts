@@ -26,7 +26,6 @@ export class LandingComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userForm.value);
     // Save user data
     this.userData.saveUser(this.userForm.value);
 

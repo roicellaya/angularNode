@@ -43,15 +43,16 @@ export class IncomeComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     // Send data to node service
-    console.log(Object.assign(this.incomeForm.value, this.user));
     this.api.sendUser(Object.assign(this.incomeForm.value, this.user))
       .subscribe(
         (response: any) => {
           console.log(response);
+          this.toastr.success(response.message)
         }, (httpError: any) => {
           console.log(httpError);
           this.toastr.error(httpError.message);
-        });
+        }
+      );
   }
 
 }
