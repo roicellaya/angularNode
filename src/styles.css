@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: PFBeauSans;
+  src: url('./assets/fonts/PFBeauSansPro-Regular.ttf') format('opentype');
+}
+
+* {
+  font-family: PFBeauSans,Arial,sans-serif;
+}
+
 .logo-container {
   min-height: 72px;
   background-color: #ffffff;
